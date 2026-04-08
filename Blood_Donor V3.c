@@ -30,31 +30,44 @@ int isCompatible(char donor[], char recipient[]) {
     return 0;
 }
 
-// Add donor to file
+// Add donor(s)
 void addDonor() {
     struct Donor d;
     FILE *fp = fopen("donors.txt", "a");
 
-    printf("\nEnter name: ");
-    scanf("%s", d.name);
+    if (fp == NULL) {
+        printf("Error opening file!\n");
+        return;
+    }
 
-    printf("Enter blood group (A/B/AB/O): ");
-    scanf("%s", d.blood);
+    char choice;
 
-    printf("Enter age: ");
-    scanf("%d", &d.age);
+    do {
+        printf("\nEnter name: ");
+        scanf("%49s", d.name);
 
-    printf("Months since last donation: ");
-    scanf("%d", &d.lastDonation);
+        printf("Enter blood group (A/B/AB/O): ");
+        scanf("%2s", d.blood);
 
-    fprintf(fp, "%s %s %d %d\n", d.name, d.blood, d.age, d.lastDonation);
+        printf("Enter age: ");
+        scanf("%d", &d.age);
+
+        printf("Months since last donation: ");
+        scanf("%d", &d.lastDonation);
+
+        fprintf(fp, "%s %s %d %d\n", d.name, d.blood, d.age, d.lastDonation);
+
+        printf("Donor saved successfully!\n");
+
+        printf("Do you want to add another donor? (y/n): ");
+        scanf(" %c", &choice);
+
+    } while (choice == 'y' || choice == 'Y');
 
     fclose(fp);
-
-    printf("Donor saved successfully!\n");
 }
 
-// Display all donors
+// Display donors
 void displayDonors() {
     struct Donor d;
     FILE *fp = fopen("donors.txt", "r");
@@ -67,14 +80,25 @@ void displayDonors() {
     printf("\n--- All Donors ---\n");
     printf("Name\tBlood\tAge\tLast Donation\n");
 
-    while (fscanf(fp, "%s %s %d %d", d.name, d.blood, &d.age, &d.lastDonation) != EOF) {
-        printf("%s\t%s\t%d\t%d months\n", d.name, d.blood, d.age, d.lastDonation);
+    int count = 0;
+
+    while (fscanf(fp, "%49s %2s %d %d",
+                  d.name, d.blood, &d.age, &d.lastDonation) == 4) {
+
+        printf("%s\t%s\t%d\t%d months\n",
+               d.name, d.blood, d.age, d.lastDonation);
+
+        count++;
+    }
+
+    if (count == 0) {
+        printf("No valid donor data found.\n");
     }
 
     fclose(fp);
 }
 
-// Search compatible donors
+// Search donors
 void searchDonor() {
     struct Donor d;
     char required[3];
@@ -86,13 +110,15 @@ void searchDonor() {
     }
 
     printf("\nEnter required blood group: ");
-    scanf("%s", required);
+    scanf("%2s", required);
 
     printf("\n--- Eligible & Compatible Donors ---\n");
 
     int found = 0;
 
-    while (fscanf(fp, "%s %s %d %d", d.name, d.blood, &d.age, &d.lastDonation) != EOF) {
+    while (fscanf(fp, "%49s %2s %d %d",
+                  d.name, d.blood, &d.age, &d.lastDonation) == 4) {
+
         if (isEligible(d.age, d.lastDonation) &&
             isCompatible(d.blood, required)) {
 
@@ -110,6 +136,19 @@ void searchDonor() {
     fclose(fp);
 }
 
+// NEW: Clear all data
+void clearData() {
+    FILE *fp = fopen("donors.txt", "w"); // overwrite file
+
+    if (fp == NULL) {
+        printf("Error clearing data!\n");
+        return;
+    }
+
+    fclose(fp);
+    printf("All donor data cleared successfully!\n");
+}
+
 // Main menu
 int main() {
     int choice;
@@ -119,16 +158,35 @@ int main() {
         printf("1. Add Donor\n");
         printf("2. Display All Donors\n");
         printf("3. Search Compatible Donors\n");
-        printf("4. Exit\n");
+        printf("4. Clear All Data\n");
+        printf("5. Exit\n");
         printf("Enter choice: ");
+
         scanf("%d", &choice);
 
         switch (choice) {
-            case 1: addDonor(); break;
-            case 2: displayDonors(); break;
-            case 3: searchDonor(); break;
-            case 4: return 0;
-            default: printf("Invalid choice!\n");
+            case 1:
+                addDonor();
+                break;
+
+            case 2:
+                displayDonors();
+                break;
+
+            case 3:
+                searchDonor();
+                break;
+
+            case 4:
+                clearData();
+                break;
+
+            case 5:
+                printf("Exiting...\n");
+                return 0;
+
+            default:
+                printf("Invalid choice! Try again.\n");
         }
     }
 }
