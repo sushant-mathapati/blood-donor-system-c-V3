@@ -1,98 +1,66 @@
-🩸 Blood Donor Management System (C) – V3
+Blood Donor Management System in C (Version 3)
+A console-based Blood Donor Management System built using C that simulates how a real system stores and manages donor data. Instead of temporary execution-only programs, this project focuses on persistent storage and structured logic.
+About the Project
+This project was developed to understand how real applications handle data beyond runtime. Donor details are stored in a file and can be accessed, searched, and managed anytime through a menu-driven interface.
 
-📌 Overview
+Features
+• Add multiple donors with details (name, blood group, age, last donation)
+• Store donor data permanently using file handling 💾
+• Display all donors in a structured format 📋
+• Search for eligible & compatible donors 🔍
+• Clear all stored data to reset the system ♻️
+• Simple menu-driven interface for easy use
 
-This project is a simple blood donor management system built in C.  
-It helps find **eligible and compatible donors** based on real-world conditions like age, blood group, and last donation time.
+How the System Works
+The program provides a menu with the following options:
+Add Donor
+Enter donor details and store them in a file. Multiple donors can be added in one session.
+Display All Donors
+Reads all stored data and displays it in a tabular format.
+Search Compatible Donors
+Enter a required blood group. The system filters: • Compatible donors
+• Eligible donors based on conditions
+Clear All Data
+Deletes all stored donor data and resets the system.
+Exit
+Terminates the program.
 
-I started with a basic version that only checked blood compatibility, and then improved it by adding **eligibility checks and file handling**, so the data is stored and reused instead of being lost every time the program runs.
+Blood Compatibility Logic 🩸
+• O → Can donate to all
+• A → A, AB
+• B → B, AB
+• AB → AB only
+Eligibility Criteria
+A donor is considered eligible only if:
+• Age is 18 or above
+• At least 3 months since last donation
 
----
+Example Workflow
+• Add multiple donors
+• Display all stored donors
+• Search using required blood group
+• View only eligible and compatible donors
+• Clear data and restart fresh
 
-🚀 What This Program Can Do
+Technologies Used
+• C Programming
+• File Handling (fopen, fscanf, fprintf)
+• Structures
+• Functions
+• String handling
 
-- Add new donors with details (name, blood group, age, last donation)
-- Check if a donor is eligible:
-  - Age should be 18 or above  
-  - At least 3 months since last donation  
-- Find donors compatible with a required blood group
-- Display all stored donors
-- Store data permanently using file handling
-- Run using a simple menu-based interface
+What I Learned
+• How to store and retrieve data using files 📂
+• Difference between append and overwrite modes
+• Structuring programs using functions
+• Implementing real-world logic in code
+• Debugging file and input issues
 
----
+Future Improvements 🚀
+• Support names with spaces
+• Add edit and delete functionality
+• Improve input validation
+• Convert into GUI or web-based system
 
-⚙️ How It Works
-
-The program stores all donor details in a file (`donors.txt`).
-
-From the menu, you can:
-1. Add a donor  
-2. View all donors  
-3. Search for compatible donors  
-
-While searching, the program:
-- First checks if the donor is eligible  
-- Then checks if the blood group is compatible  
-
-Only donors satisfying both conditions are shown.
-
----
-
-🧠 Blood Compatibility Logic
-
-| Recipient | Can Receive From |
-|----------|----------------|
-| O        | O              |
-| A        | A, O           |
-| B        | B, O           |
-| AB       | A, B, AB, O    |
-
----
-
-🛠️ How to Run
-
-Compile
-```bash
-gcc blood_donor_v3.c -o donor
-```
-Run
-```bash
-./donor
-```
-
----
-
-📊 Example
-
-```
-Enter required blood group: A
-
-Eligible & Compatible Donors:
-Rahul (O, Age: 25, Last Donation: 4 months)
-Amit (A, Age: 30, Last Donation: 5 months)
-```
-
----
-🔮 What I Can Improve Next
-
-- Add phone/contact details  
-- Allow editing or deleting donors  
-- Make it menu-driven with more options  
-- Convert this into a GUI or web app  
-- Use a database instead of a text file  
-
----
-
-👨‍💻 Author
-
+Author
 Sushant Mathapati
-
----
-
-💡 What I Learned
-
-- How to move from a basic program to a small system  
-- Using file handling to store real data  
-- Writing logic based on real-world conditions  
-- Structuring code properly instead of writing everything in `main()`
