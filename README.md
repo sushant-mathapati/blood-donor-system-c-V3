@@ -6,10 +6,10 @@ This project was developed to understand how real applications handle data beyon
 
 Features
 • Add multiple donors with details (name, blood group, age, last donation)
-• Store donor data permanently using file handling 💾
-• Display all donors in a structured format 📋
-• Search for eligible & compatible donors 🔍
-• Clear all stored data to reset the system ♻️
+• Store donor data permanently using file handling 
+• Display all donors in a structured format 
+• Search for eligible & compatible donors 
+• Clear all stored data to reset the system 
 • Simple menu-driven interface for easy use
 
 How the System Works
@@ -51,13 +51,13 @@ Technologies Used
 • String handling
 
 What I Learned
-• How to store and retrieve data using files 📂
+• How to store and retrieve data using files 
 • Difference between append and overwrite modes
 • Structuring programs using functions
 • Implementing real-world logic in code
 • Debugging file and input issues
 
-Future Improvements 🚀
+Future Improvements 
 • Support names with spaces
 • Add edit and delete functionality
 • Improve input validation
