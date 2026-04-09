@@ -13,7 +13,7 @@ int isEligible(int age, int months) {
     return (age >= 18 && months >= 3);
 }
 
-// Check compatibility
+// check
 int isCompatible(char donor[], char recipient[]) {
     if (strcmp(recipient, "O") == 0)
         return strcmp(donor, "O") == 0;
