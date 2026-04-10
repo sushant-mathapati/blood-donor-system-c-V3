@@ -148,8 +148,7 @@ void clearData() {
     fclose(fp);
     printf("All donor data cleared successfully!\n");
 }
-
-// Main menu
+// main menu 
 int main() {
     int choice;
 
