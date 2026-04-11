@@ -5,26 +5,33 @@ About the Project
 This project was developed to understand how real applications handle data beyond runtime. Donor details are stored in a file and can be accessed, searched, and managed anytime through a menu-driven interface.
 
 Features
+
 • Add multiple donors with details (name, blood group, age, last donation)
+
 • Store donor data permanently using file handling 
+
 • Display all donors in a structured format 
+
 • Search for eligible & compatible donors 
+
 • Clear all stored data to reset the system 
+
 • Simple menu-driven interface for easy use
 
 How the System Works
 The program provides a menu with the following options:
-Add Donor
-Enter donor details and store them in a file. Multiple donors can be added in one session.
-Display All Donors
-Reads all stored data and displays it in a tabular format.
-Search Compatible Donors
-Enter a required blood group. The system filters: • Compatible donors
+1.Add Donor
+2.Enter donor details and store them in a file. Multiple donors can be added in one session.
+3.Display All Donors
+4.Reads all stored data and displays it in a tabular format.
+5.Search Compatible Donors
+6Enter a required blood group. The system filters:
+• Compatible donors
 • Eligible donors based on conditions
 Clear All Data
-Deletes all stored donor data and resets the system.
-Exit
-Terminates the program.
+•Deletes all stored donor data and resets the system.
+•Exit
+•Terminates the program.
 
 Blood Compatibility Logic 🩸
 • O → Can donate to all
