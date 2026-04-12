@@ -7,8 +7,7 @@ struct Donor {
     int age;
     int lastDonation;
 };
-
-// Check eligibility
+// check eligibility 
 int isEligible(int age, int months) {
     return (age >= 18 && months >= 3);
 }
