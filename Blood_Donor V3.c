@@ -135,7 +135,6 @@ void searchDonor() {
     fclose(fp);
 }
 
-// NEW: Clear all data
 void clearData() {
     FILE *fp = fopen("donors.txt", "w"); // overwrite file
 
